@@ -22,7 +22,8 @@
         <activity android:name=".AlarmBox" />
         <activity android:name=".Join" />
         <activity android:name=".Kanban1" />
-        <activity android:name=".Create_Kanban1"></activity>
+        <activity android:name=".Create_Kanban1" />
+        <activity android:name=".Kanban2"></activity>
     </application>
 
 </manifest>
