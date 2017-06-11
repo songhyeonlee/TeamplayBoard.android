@@ -61,7 +61,7 @@
             android:background="#f4f4f4"
             android:hint="비밀번호"
             android:padding="10dp"
-            tools:text="password" />
+            android:inputType="textPassword"/>
 
         <Button
             android:layout_width="280dp"

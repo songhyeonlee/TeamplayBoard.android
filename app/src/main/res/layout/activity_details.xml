@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#d6dbe1"
-    tools:context="songhyeonlee.teamplayboard.Create_Kanban1">
 
+    tools:context="songhyeonlee.teamplayboard.Details">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,33 +17,42 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout">
+        android:id="@+id/projcet_name">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="60dp"
             android:gravity="center_vertical"
-            android:text="프로젝트 이름"
+            android:text="프로젝트 A (이름)"
             android:paddingLeft="10dp"
             android:textSize="25dp"
-            android:textStyle="bold"
-            tools:text="create new project" />
+            android:textStyle="bold" />
 
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:background="#929292"
+            android:onClick="edit_details"
+            android:text="수정하기"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:gravity="bottom|center"
-        android:layout_below="@+id/linearLayout"
+        android:padding="7dp"
+        android:id="@+id/linearLayout3"
+        android:layout_below="@+id/projcet_name"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout3">
+        android:layout_alignParentStart="true">
 
-        <EditText
+        <TextView
             android:layout_width="340dp"
             android:layout_height="50dp"
-            android:hint="할 일 제목"
+            android:text="할 일 제목"
+            android:gravity="fill"
             android:paddingLeft="10dp"
             android:background="#e9e9e9"/>
 
@@ -53,107 +62,109 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center"
-        android:layout_marginTop="5dp"
         android:orientation="horizontal"
+        android:id="@+id/linearLayout4"
         android:layout_below="@+id/linearLayout3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout4">
+        android:layout_alignParentStart="true">
 
         <TextView
             android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="완료기한"
+            android:layout_height="45dp"
+            android:text="이송현"
             android:layout_marginRight="10dp"
             android:textStyle="bold"
             android:gravity="center"
             android:background="#e9e9e9"/>
 
         <TextView
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:text="YY-MM-DD"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="10dp"
+            android:text="17-06-09"
             android:gravity="center"
             android:background="#e9e9e9"/>
 
         <Button
-            android:layout_width="50dp"
+            android:layout_width="90dp"
             android:layout_height="50dp"
+            android:text="재촉하기"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:backgroundTint="#ff5c00"
+
             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="110dp"
+        android:gravity="center"
         android:orientation="horizontal"
         android:layout_below="@+id/linearLayout4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:weightSum="1"
-        android:gravity="bottom"
-        android:id="@+id/linearLayout7">
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="23dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/linearLayout7"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/linearLayout8"
-        android:weightSum="1">
+        android:id="@+id/linearLayout10">
 
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="104dp"
-            android:layout_margin="20dp"
-            android:inputType="textMultiLine"
-            android:hint="메모"
-            android:gravity="clip_vertical"
+        <TextView
+            android:id="@+id/editText"
+            android:layout_width="340dp"
+            android:layout_height="match_parent"
+            android:text="메모 ~~~~~~~~~~"
             android:textSize="15dp"
             android:background="#e9e9e9"
             android:padding="10dp"
-            android:layout_weight="0.88" />
+            android:inputType="textMultiLine"
+            android:gravity="clip_vertical"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="25dp"
+        android:gravity="center_vertical"
+        android:text="코멘트"
+        android:textColor="#000000"
+        android:layout_below="@+id/linearLayout10"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView6" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView6">
+
 
 
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_above="@+id/linearLayout2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_height="40dp"
         android:orientation="horizontal"
-        android:gravity="top|right"
-        android:id="@+id/linearLayout8">
+        android:gravity="left"
+        android:layout_above="@+id/linearLayout9"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height= "match_parent"
+
+            android:background="#e9e9e9"
+            android:textSize="15dp"
+            android:hint="   댓글을 입력하세요."/>
 
         <Button
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:text="취소하기"
-            android:background="#f4f4f4"
-
-            android:layout_marginRight="5dp"
-            android:gravity="center"/>
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:text="추가하기"
-            android:layout_marginRight="25dp"
-
-            android:textColor="#ffffff"
-            android:background="#3fa9f5"
-            android:gravity="center"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="댓글 등록"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:background="#929292"
+            android:textColor="#ffffff"/>
 
     </LinearLayout>
 
@@ -167,7 +178,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="#636265"
-        android:id="@+id/linearLayout2">
+        android:id="@+id/linearLayout9">
 
         <Button
             android:layout_width="130dp"
@@ -183,6 +194,8 @@
             android:onClick="toAlarm"
             android:text="알림함"
             android:textStyle="bold" />
+
+
 
     </LinearLayout>
 

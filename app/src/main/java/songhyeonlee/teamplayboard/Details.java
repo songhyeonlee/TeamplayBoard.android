@@ -5,12 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class Create_Kanban1 extends AppCompatActivity {
+public class Details extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create__kanban1);
+        setContentView(R.layout.activity_details);
+    }
+
+    public void edit_details(View v){
+        Intent i = new Intent(getApplicationContext(), Edit_Details.class);
+        startActivity(i);
     }
 
     public void toMain(View v){
@@ -22,5 +27,4 @@ public class Create_Kanban1 extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), AlarmBox.class);
         startActivity(i);
     }
-
 }
