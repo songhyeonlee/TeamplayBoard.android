@@ -48,7 +48,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#636265">
+        android:background="#636265"
+        android:id="@+id/linearLayout9">
         
         <Button
             android:layout_width="130dp"
@@ -70,12 +71,15 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:onClick="test2"
-        android:text="Button" />
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:onClick="test3"
+        android:text="project A"
+        android:layout_above="@+id/linearLayout9"
+        android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignStart="@+id/linearLayout2"
+        android:layout_marginBottom="139dp" />
 </RelativeLayout>

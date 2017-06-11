@@ -23,7 +23,13 @@
         <activity android:name=".Join" />
         <activity android:name=".Kanban1" />
         <activity android:name=".Create_Kanban1" />
-        <activity android:name=".Kanban2"></activity>
+        <activity android:name=".Kanban2" />
+        <activity android:name=".kanban3" />
+        <activity android:name=".Kanban3" />
+        <activity android:name=".Details" />
+        <activity android:name=".Edit_Details" />
+        <activity android:name=".Change_PW" />
+        <activity android:name=".Find_PW"></activity>
     </application>
 
 </manifest>

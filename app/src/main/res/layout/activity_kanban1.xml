@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:id="@+id/linearLayout9">
+        android:id="@+id/project_drop">
 
         <Spinner
             android:id="@+id/spinner3"
@@ -20,68 +20,196 @@
             />
     </LinearLayout>
 
-    <TabHost
-        android:layout_width="200dip"
-        android:layout_height="300dip"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/project_drop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout9"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/tab">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/tab1"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:backgroundTint="#3fa9f5"
+            android:onClick="toKanban1"
+            android:text="시작 전"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/tab2"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:onClick="toKanban2"
+            android:text="진행 중"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/tab3"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:onClick="toKanban3"
+            android:text="완료함"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/kanban1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab"
+        >
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TabWidget
-                android:id="@android:id/tabs"
+            android:layout_height="344dp">
+            <LinearLayout
+                android:id="@+id/addTask"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="50dp"
+                android:gravity="center">
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#ffffff"
+                    android:onClick="test2"
+                    android:text="+ 할 일 추가하기"
+                    android:textColor="#ff8700"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="40dp"
+                android:gravity="left|center_vertical"
+                android:layout_below="@+id/addTask"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/delete">
 
-                <LinearLayout
-                    android:id="@+id/tab1"
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/delete_button"
+                    android:layout_marginLeft="10dp"
+                    android:text="DELETE"
+                    android:textSize="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:id="@+id/Task_list1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#ffffffff"
+                android:layout_below="@+id/delete"
+                android:layout_centerHorizontal="true">
+
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp" />
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:onClick="show_details"
+                    android:text="task1"
+                    android:textStyle="italic"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/ToKanban2"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="진행하기 >"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/Task_list1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="#ffffff"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:weightSum="1">
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:gravity="center_vertical"
+                    android:text="30일 남았습니다."
+                    android:textSize="12dp"
+                    android:paddingLeft="40dp"
+                    />
 
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="+ 할 일 추가하기"
-                        android:background="#f4f4f4"
-                        android:layout_margin="10dp"
-                        android:textColor="#ff8700"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        tools:text="+ things to do"/>
-                </LinearLayout>
+            </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+        </RelativeLayout>
+    </FrameLayout>
 
-                </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
 
-                </LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#636265"
+        android:id="@+id/linearLayout12">
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="50dp"
+            android:onClick="toMain"
+            android:text="메인화면"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:onClick="toAlarm"
+            android:text="알림함"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>
