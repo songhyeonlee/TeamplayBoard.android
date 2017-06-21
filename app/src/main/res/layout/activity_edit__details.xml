@@ -176,13 +176,14 @@
         android:padding="15dp">
 
         <Button
-
+            android:id="@+id/cancelButton"
             android:layout_width="100dp"
             android:layout_height="45dp"
             android:text="취소하기"
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/editButton"
             android:layout_width="100dp"
             android:layout_height="45dp"
             android:backgroundTint="#3fa9f5"

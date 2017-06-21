@@ -19,7 +19,7 @@
         android:id="@+id/linearLayout">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/LogoText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -27,8 +27,7 @@
             android:text="팀플보드"
             android:textColor="#636265"
             android:textSize="75dp"
-            android:textStyle="bold"
-            tools:text="TPBD" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -43,27 +42,28 @@
         android:id="@+id/linearLayout2">
 
         <EditText
-            android:id="@+id/passwordText"
+            android:id="@+id/IdText"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
+            android:background="#f4f4f4"
             android:hint="ID"
-            android:padding="10dp"
-            android:background="#f4f4f4"/>
+            android:padding="10dp" />
 
         <EditText
-            android:id="@+id/idText"
+            android:id="@+id/PasswordText"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="#f4f4f4"
             android:hint="비밀번호"
-            android:padding="10dp"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:padding="10dp" />
 
         <Button
+            android:id="@+id/LoginButton"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -72,8 +72,7 @@
             android:gravity="center"
             android:text="로그인"
             android:textColor="#ffffff"
-            android:textStyle="bold"
-            tools:text="login" />
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -87,7 +86,7 @@
         android:layout_centerHorizontal="true">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/Joinbutton"
             android:layout_width="125dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
@@ -97,21 +96,21 @@
             android:onClick="toJoin"
             android:text="회원가입"
             android:textColor="#ffffff"
-            android:textStyle="bold"
-            tools:text="join" />
+            android:textStyle="bold" />
 
         <Button
+            android:id="@+id/findidpwButton"
             android:layout_width="125dp"
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:layout_marginLeft="15dp"
-            android:background="#f4f4f4"
 
+            android:background="#f4f4f4"
             android:gravity="center"
             android:onClick="findIDPW"
             android:text="ID/비밀번호찾기"
-            android:textStyle="bold"
-            tools:text="id/password" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textStyle="bold" />
 
 
     </LinearLayout>
