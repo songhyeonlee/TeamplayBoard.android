@@ -7,8 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class Create_Kanban1 extends AppCompatActivity {
+
+    //EditText newProject;
+
+  //  EditText addProject_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,9 @@ public class Create_Kanban1 extends AppCompatActivity {
                 showMessage2();
             }
         });
+
+     //   newProject = (EditText)findViewById(R.id.newProject);
+
     }
 
     private void showMessage1(){
