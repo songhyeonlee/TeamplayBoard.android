@@ -54,7 +54,7 @@ public class Join extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
-
+        //회원가입버튼
         bntjoin = (Button)findViewById(R.id.bntjoin);
         bntjoin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -100,6 +100,8 @@ public class Join extends AppCompatActivity {
         });
 
 
+
+        //회원가입 취소 버튼
         bntCancel = (Button)findViewById(R.id.bntCancel);
         bntCancel.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -136,6 +138,8 @@ public class Join extends AppCompatActivity {
 
     }
 
+
+    //회원가입 성공/실패
     public void registerUser(String email, String password){
 
         pbJoin.setVisibility(View.VISIBLE);
@@ -154,7 +158,7 @@ public class Join extends AppCompatActivity {
 
 
                         if (!task.isSuccessful()) {
-                            Toast.makeText(Join.this, "Authentication failed",
+                            Toast.makeText(Join.this, "입력정보을 확인해 주세요",
                                     Toast.LENGTH_SHORT).show();
                         }
                         else{

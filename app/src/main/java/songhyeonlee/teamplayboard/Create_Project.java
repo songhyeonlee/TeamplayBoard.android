@@ -45,6 +45,7 @@ public class Create_Project extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
+        //프로젝트 생성 취소 버튼
         cancelButton = (Button) findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -55,6 +56,8 @@ public class Create_Project extends AppCompatActivity {
 
         newProject = (EditText)findViewById(R.id.newProject);
 
+
+        //프로젝트 생성 버튼
         btnAddProject = (Button) findViewById(R.id.btnAddProject);
         btnAddProject.setOnClickListener(new View.OnClickListener(){
             @Override

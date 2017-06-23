@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
+        //파이어베이스 "프로젝트" DB에 저장
         DatabaseReference myRef3 = database.getReference("project");
         myRef3.addChildEventListener(new ChildEventListener() {
             @Override
@@ -100,10 +101,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void test1(View v){
-        Intent i = new Intent(getApplicationContext(), Login.class);
-        startActivity(i);
-    }
+//    public void test1(View v){
+//        Intent i = new Intent(getApplicationContext(), Login.class);
+//        startActivity(i);
+//    }
 
     public void test2(View v){
         Intent i = new Intent(getApplicationContext(), Create_Kanban1.class);

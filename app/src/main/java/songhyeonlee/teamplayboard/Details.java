@@ -104,9 +104,9 @@ public class Details extends AppCompatActivity {
 
         if (user != null) {
             // Name, email address, and profile photo Url
-       //     name = user.getDisplayName();
+            // name = user.getDisplayName();
             email = user.getEmail();
-          //  username = user.getDisplayName();
+            //  username = user.getDisplayName();
 
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
@@ -114,7 +114,7 @@ public class Details extends AppCompatActivity {
             String uid = user.getUid();
         }
 
-
+        //댓글 전송버튼
         messageInput = (EditText)findViewById(R.id.messageInput);
         sendButton = (Button)findViewById(R.id.sendButton);
         sendButton.setOnClickListener(new View.OnClickListener(){
@@ -131,8 +131,6 @@ public class Details extends AppCompatActivity {
                    Calendar c = Calendar.getInstance();
                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                    String formattedDate = df.format(c.getTime());
-
-
 
                    // Write a message to the database
                    DatabaseReference myRef = database.getReference("comments").child(formattedDate);
@@ -169,6 +167,7 @@ public class Details extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
+        //댓글 글쓴이 이메일, 내용 "comment" DB에 저장
         DatabaseReference myRef2 = database.getReference("comments");
         myRef2.addChildEventListener(new ChildEventListener() {
             @Override
@@ -222,6 +221,8 @@ public class Details extends AppCompatActivity {
             }
         });
 
+
+        //수정버튼
         btnEdit = (Button)findViewById(R.id.btnEdit);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,9 +250,4 @@ public class Details extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-
-
-
-
 }
