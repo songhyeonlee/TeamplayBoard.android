@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "455363498102-oa8qqil0kt5gatrhvo2sopansdfinir3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "songhyeonlee.teamplayboard",
+            "certificate_hash": "e08fd7fde3f24b1b6b22f0a3c97aedb192dd1ab4"
+          }
+        },
+        {
           "client_id": "455363498102-a0vvq4h0riilc1jq5uqqcl4udhdoeagr.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455363498102-a0vvq4h0riilc1jq5uqqcl4udhdoeagr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

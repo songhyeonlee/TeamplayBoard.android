@@ -61,7 +61,7 @@ public class Details extends AppCompatActivity {
     Button sendButton;
     Button btnEdit;
     String email;
-    String username;
+  //  String name;
     List<Comment> mComments;
 
     FirebaseDatabase database;
@@ -104,7 +104,7 @@ public class Details extends AppCompatActivity {
 
         if (user != null) {
             // Name, email address, and profile photo Url
-            String name = user.getDisplayName();
+       //     name = user.getDisplayName();
             email = user.getEmail();
           //  username = user.getDisplayName();
 
@@ -140,7 +140,7 @@ public class Details extends AppCompatActivity {
                    Hashtable<String, String> comment
                            = new Hashtable<String, String>();
                    comment.put("email", email);
-             //      comment.put("name", username);
+                 //  comment.put("name", name);
 
                    comment.put("text", stText);
 

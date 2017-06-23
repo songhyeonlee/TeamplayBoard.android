@@ -41,6 +41,7 @@
     android:id="@+id/linearLayout3">
 
     <EditText
+        android:id="@+id/newProject"
         android:layout_width="340dp"
         android:layout_height="50dp"
         android:hint="새 프로젝트 제목"
@@ -92,6 +93,7 @@
         android:layout_alignParentStart="true">
 
         <EditText
+            android:id="@+id/addProject_id"
             android:layout_width="230dp"
             android:layout_height="35dp"
             android:hint="팀원 아이디를 입력하세요."
@@ -128,7 +130,7 @@
             android:gravity="center"/>
 
         <Button
-            android:id="@+id/addProject"
+            android:id="@+id/btnAddProject"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="만들기"
@@ -168,6 +170,11 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/pbAddProjcet"
+        android:visibility="gone"/>
 
 </RelativeLayout>

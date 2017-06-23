@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:orientation="vertical"
-    android:layout_margin="20dp"
+    android:layout_marginTop="20dp"
     android:id="@+id/linearLayout2">
     
     <Button
@@ -28,7 +28,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/defualt_addproject"
         android:layout_width="350dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -37,6 +37,31 @@
         android:text="버튼을 눌러 할 일을 추가해주세요!" />
     
 </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_above="@+id/linearLayout9">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@+id/textView6">
+
+            <!-- A RecyclerView with some commonly used attributes -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/project_view"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </ScrollView>
+
+    </LinearLayout>
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,8 +79,7 @@
             android:layout_height="40dp"
             android:layout_marginRight="50dp"
             android:text="메인화면"
-            android:textStyle="bold"
-            android:onClick="test1"/>
+            android:textStyle="bold" />
 
         <Button
             android:layout_width="130dp"
@@ -72,12 +96,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
         android:onClick="test3"
         android:text="project A"
+        android:layout_marginBottom="16dp"
         android:layout_above="@+id/linearLayout9"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_alignStart="@+id/linearLayout2"
-        android:layout_marginBottom="139dp" />
+        android:layout_alignRight="@+id/linearLayout2"
+        android:layout_alignEnd="@+id/linearLayout2" />
 </RelativeLayout>

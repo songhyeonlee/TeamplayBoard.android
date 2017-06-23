@@ -48,6 +48,7 @@
             android:textStyle="bold"/>
 
         <EditText
+            android:id="@+id/join_name"
             android:layout_width="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -68,12 +69,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:text="학번"
+            android:text="이메일(학번)"
             android:textSize="20dp"
             android:layout_marginLeft="30dp"
             android:textStyle="bold"/>
 
         <EditText
+            android:id="@+id/join_email"
             android:layout_width="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -112,6 +114,7 @@
         android:id="@+id/linearLayout5">
 
         <EditText
+            android:id="@+id/join_id"
             android:layout_width="220dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="15dp"
@@ -147,6 +150,7 @@
             android:textStyle="bold"/>
 
         <EditText
+            android:id="@+id/join_pw"
             android:layout_width="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -175,6 +179,7 @@
             android:textStyle="bold"/>
 
         <EditText
+            android:id="@+id/join_pwpw"
             android:layout_width="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -194,6 +199,7 @@
         android:gravity="center">
         
         <Button
+            android:id="@+id/bntCancel"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="취소하기"
@@ -202,6 +208,7 @@
             android:textStyle="bold"/>
 
         <Button
+            android:id="@+id/bntjoin"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="가입하기"
@@ -209,4 +216,12 @@
             android:textColor="#ffffff"
             android:background="#3fa9f5" />
     </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/pbJoin"
+        android:visibility="gone"/>
+
 </RelativeLayout>
