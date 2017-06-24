@@ -13,19 +13,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.graphics.Color;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    String TAG = "Project_list";
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -34,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
     TextView defualt_addproject;
     TextView delete_explain;
     Button btnDeleteProjct;
+
+    Button btnMain;
+    Button btnAlarm;
+
+    String email;
 
     FirebaseDatabase database;
 
@@ -48,7 +59,19 @@ public class MainActivity extends AppCompatActivity {
         delete_explain = (TextView)findViewById(R.id.delete_explain);
         btnDeleteProjct = (Button)findViewById(R.id.btnDeleteProjct);
 
+        btnMain = (Button) findViewById(R.id.btnMain);
+        btnAlarm = (Button) findViewById(R.id.btnAlarm);
+
         database = FirebaseDatabase.getInstance();
+
+
+        database = FirebaseDatabase.getInstance();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            email = user.getEmail();
+        }
+
 
         mRecyclerView  = (RecyclerView) findViewById(R.id.projcet_listview);
         mRecyclerView.setHasFixedSize(true);
@@ -59,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         mProject = new ArrayList<>();
 
         // specify an adapter (see also next example)
-        mAdapter = new Project_Adapter(mProject);
+        mAdapter = new Project_Adapter(mProject, email, MainActivity.this);
         mRecyclerView.setAdapter(mAdapter);
 
 
@@ -104,6 +127,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue().toString();
+                Log.d(TAG, "Value is: " + value);
+
+                for(DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
+                    String value2 = dataSnapshot2.getValue().toString();
+
+                    Project_db project = dataSnapshot2.getValue(Project_db.class);
+
+                    mProject.add(project);
+                    mAdapter.notifyItemInserted(mProject.size()-1);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+
+
         mRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 
@@ -150,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), Kanban1.class);
         startActivity(i);
     }
+
 
 
 

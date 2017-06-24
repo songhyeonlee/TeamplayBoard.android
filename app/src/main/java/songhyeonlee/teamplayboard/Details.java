@@ -180,6 +180,7 @@ public class Details extends AppCompatActivity {
                 // Update RecyclerView
               //  mCommentIds.add(dataSnapshot.getKey());
                 mComments.add(comment);
+                mRecyclerView.scrollToPosition(mComments.size() - 1);
                 mAdapter.notifyItemInserted(mComments.size() - 1);
                 // [END_EXCLUDE]
             }

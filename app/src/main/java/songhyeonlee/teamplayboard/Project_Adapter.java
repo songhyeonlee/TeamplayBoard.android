@@ -1,5 +1,7 @@
 package songhyeonlee.teamplayboard;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,9 @@ import java.util.List;
 public class Project_Adapter extends RecyclerView.Adapter<Project_Adapter.ViewHolder>  {
 
     List<Project_db> mProject;
+    String stEmail;
+    Context context;
+
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -34,8 +39,10 @@ public class Project_Adapter extends RecyclerView.Adapter<Project_Adapter.ViewHo
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public Project_Adapter(List<Project_db> mProject) {
+    public Project_Adapter(List<Project_db> mProject, String stEmail, Context context) {
         this.mProject = mProject;
+        this.stEmail = stEmail;
+        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -61,6 +68,13 @@ public class Project_Adapter extends RecyclerView.Adapter<Project_Adapter.ViewHo
         holder.mProjectdueMessage.setText("마감기한 : "+ mProject.get(position).getProject_duedate());
         //holder.mProjectdueMessage.setText(mProject.get(position).);
 
+        holder.mProjectName.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(context, Create_Kanban1.class);
+                context.startActivity(i);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -153,7 +153,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void toCreateKanban(View v){
-        Intent i = new Intent(Login.this, Create_Kanban1.class);
+        Intent i = new Intent(Login.this, Details.class);
         startActivity(i);
     }
 
