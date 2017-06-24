@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     String TAG = "Login";
+
     EditText etEmail;
     EditText etPassword;
     String stemail;
@@ -38,6 +39,10 @@ public class Login extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.etPassword);
         pbLogin = (ProgressBar) findViewById(R.id.pbLogin);
 
+        Button bntRegister = (Button) findViewById(R.id.bntRegister);
+        Button bntLogin = (Button) findViewById(R.id.bntLogin);
+        Button findidpwButton = (Button)findViewById(R.id.findidpwButton);
+
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -55,27 +60,19 @@ public class Login extends AppCompatActivity {
             }
         };
 
-        Button bntRegister = (Button) findViewById(R.id.bntRegister);
+
+        //회원가입 버튼
         bntRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                stemail = etEmail.getText().toString();
-                stpassword = etPassword.getText().toString();
 
-          //      Toast.makeText(Login.this, stemail + ", " + stpassword, Toast.LENGTH_SHORT).show();
-            //    if(stemail.equals("")||stemail.isEmpty()||stpassword.equals("")||stpassword.isEmpty()){
-             //       Toast.makeText(Login.this, "입력해 주세요",Toast.LENGTH_SHORT).show();
-              //  }
-               // else {
-
-                    //registerUser(stemail, stpassword);
                     Intent i = new Intent(Login.this, Join.class);
                     startActivity(i);
-               // }
             }
         });
 
-        Button bntLogin = (Button) findViewById(R.id.bntLogin);
+
+        //로그인 버튼
         bntLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -84,7 +81,7 @@ public class Login extends AppCompatActivity {
                 stpassword = etPassword.getText().toString();
 
                 if(stemail.equals("")||stemail.isEmpty()||stpassword.equals("")||stpassword.isEmpty()){
-                    Toast.makeText(Login.this, "아이디나 비밀번호를 입력해주세요.",
+                    Toast.makeText(Login.this, "아이디나 비밀번호를 모두 입력해주세요.",
                             Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -93,7 +90,8 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        Button findidpwButton = (Button)findViewById(R.id.findidpwButton);
+
+        //아이디/비밀번호 찾기 버튼
         findidpwButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -103,15 +101,6 @@ public class Login extends AppCompatActivity {
         });
     }
 
-//    public void toJoin(View v){
-//        Intent i = new Intent(getApplicationContext(), Join.class);
-//        startActivity(i);
-//    }
-
-//    public void findIDPW(View v){
-//        Intent i = new Intent(getApplicationContext(), Find_IdPw.class);
-//        startActivity(i);
-//    }
 
 
     @Override
@@ -129,7 +118,7 @@ public class Login extends AppCompatActivity {
 
 
 
-
+    //로그인 성공 or 실패
     private void userLogin(String email, String password){
         pbLogin.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email, password)
@@ -139,9 +128,7 @@ public class Login extends AppCompatActivity {
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
                         pbLogin.setVisibility(View.GONE);
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
+
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             Toast.makeText(Login.this, "회원정보가 없습니다.",
@@ -152,8 +139,24 @@ public class Login extends AppCompatActivity {
                             startActivity(i);
                         }
 
-                        // ...
                     }
                 });
     }
+
+
+
+
+
+    public void toKanban1(View v){
+        Intent i = new Intent(Login.this, Kanban1.class);
+        startActivity(i);
+    }
+
+    public void toCreateKanban(View v){
+        Intent i = new Intent(Login.this, Create_Kanban1.class);
+        startActivity(i);
+    }
+
 }
+
+

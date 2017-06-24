@@ -20,10 +20,11 @@
         android:id="@+id/linearLayout">
 
         <TextView
+            android:id="@+id/projectName"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="center_vertical"
-            android:text="할일 추가하기"
+            android:text="할일 추가하기 - projectA"
             android:paddingLeft="10dp"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -40,10 +41,11 @@
         android:id="@+id/linearLayout3">
 
         <EditText
+            android:id="@+id/newKanban"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:hint="할 일 제목"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:background="#e9e9e9"/>
 
     </LinearLayout>
@@ -65,20 +67,28 @@
             android:text="완료기한"
             android:layout_marginRight="10dp"
             android:textStyle="bold"
+            android:textSize="18dp"
             android:gravity="center"
             android:background="#e9e9e9"/>
 
         <TextView
+            android:id="@+id/duedate_kanban"
             android:layout_width="180dp"
             android:layout_height="50dp"
             android:text="YY-MM-DD"
             android:gravity="center"
+            android:textSize="20dp"
             android:background="#e9e9e9"/>
 
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <ImageButton
+            android:id="@+id/datepicker"
+            android:src="@drawable/datepicker"
+            android:gravity="fill"
+            android:background="#e9e9e9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             />
+
     </LinearLayout>
 
     <LinearLayout
@@ -111,13 +121,14 @@
 
 
         <EditText
+            android:id="@+id/kanban_memo"
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:layout_margin="20dp"
             android:inputType="textMultiLine"
             android:hint="메모"
             android:gravity="clip_vertical"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:background="#e9e9e9"
             android:padding="10dp"
             android:layout_weight="0.88" />
@@ -140,17 +151,19 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginRight="5dp"
+            android:textStyle="bold"
 
             android:background="#f4f4f4"
             android:gravity="center"
             android:text="취소하기" />
 
         <Button
-            android:id="@+id/addList"
+            android:id="@+id/btnAddKanban"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="추가하기"
             android:layout_marginRight="25dp"
+            android:textStyle="bold"
 
             android:textColor="#ffffff"
             android:background="#3fa9f5"

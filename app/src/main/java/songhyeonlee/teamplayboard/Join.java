@@ -29,19 +29,19 @@ import java.util.Hashtable;
 
 public class Join extends AppCompatActivity {
 
-    String TAG = "Login";
+    String TAG = "Join";
 
     Button bntjoin;
     Button bntCancel;
-    EditText input_name;
+
     EditText input_email;
+    EditText input_name;
     EditText input_id;
     EditText input_pw;
     EditText input_re_pw;
 
     FirebaseDatabase database;
     //static int cnt = 1;
-
     ProgressBar pbJoin;
 
     private FirebaseAuth mAuth;
@@ -54,8 +54,20 @@ public class Join extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
-        //회원가입버튼
+        input_name = (EditText)findViewById(R.id.join_name);
+        input_email = (EditText)findViewById(R.id.join_email);
+        input_id = (EditText)findViewById(R.id.join_id);
+        input_pw = (EditText)findViewById(R.id.join_pw);
+        input_re_pw = (EditText)findViewById(R.id.join_pwpw);
+
+        pbJoin = (ProgressBar) findViewById(R.id.pbJoin);
+
         bntjoin = (Button)findViewById(R.id.bntjoin);
+        bntCancel = (Button)findViewById(R.id.bntCancel);
+
+
+
+        //회원가입버튼
         bntjoin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -65,22 +77,19 @@ public class Join extends AppCompatActivity {
                 String p = input_pw.getText().toString();
                 String rp = input_re_pw.getText().toString();
 
+                //입력하지 않은 내용이 있을 경우
                 if(n.equals("")||n.isEmpty()||e.equals("")||e.isEmpty()||i.equals("")||i.isEmpty()||p.equals("")||p.isEmpty()||rp.equals("")||rp.isEmpty()){
                     showM1();
                 }
-                //     else if(p!=rp){
-                //       showM2();
-                //  }
+
+                //회원가입 가능상태 (모든 입력칸 작성 & 비밀번호 확인)
                 else if(p.equals(rp)){
+
+                    //회원가입
                     registerUser(e, p);
 
-                    // Join_db join = new Join_db(n, e, i, p);
-
                     Join_db j = new Join_db(n,e,i,p);
-                   // String formmatedJoin = "join"+j.getCnt() ;
-                    //  cnt++;
 
-                    // Write a message to the database
                     DatabaseReference myRef = database.getReference("join").child(j.getId());
 
                     Hashtable<String, String> join
@@ -93,6 +102,7 @@ public class Join extends AppCompatActivity {
                     myRef.setValue(join);
                 }
 
+                //비밀번호와 비밀번호 확인 입력이 다를 경우
                 else{
                     showM2();
                 }
@@ -102,7 +112,6 @@ public class Join extends AppCompatActivity {
 
 
         //회원가입 취소 버튼
-        bntCancel = (Button)findViewById(R.id.bntCancel);
         bntCancel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -110,15 +119,9 @@ public class Join extends AppCompatActivity {
             }
         });
 
-        input_name = (EditText)findViewById(R.id.join_name);
-        input_email = (EditText)findViewById(R.id.join_email);
-        input_id = (EditText)findViewById(R.id.join_id);
-        input_pw = (EditText)findViewById(R.id.join_pw);
-        input_re_pw = (EditText)findViewById(R.id.join_pwpw);
-
-        pbJoin = (ProgressBar) findViewById(R.id.pbJoin);
 
 
+//회원가입 성공 시 파이어베이스 이메일 인증
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -139,7 +142,7 @@ public class Join extends AppCompatActivity {
     }
 
 
-    //회원가입 성공/실패
+    //회원가입 성공 or 실패
     public void registerUser(String email, String password){
 
         pbJoin.setVisibility(View.VISIBLE);
@@ -149,27 +152,21 @@ public class Join extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
-
                         pbJoin.setVisibility(View.GONE);
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-
-
 
                         if (!task.isSuccessful()) {
-                            Toast.makeText(Join.this, "입력정보을 확인해 주세요",
+                            Toast.makeText(Join.this, "모두 입력해주세요. 이미 가입되어 있는 이메일주소로는 중복 가입이 불가능합니다.",
                                     Toast.LENGTH_SHORT).show();
                         }
                         else{
                             showSuccess();
                         }
-
-                        // ...
                     }
                 });
     }
 
+
+    //입력칸이 비어있을 경우
     private  void showM1(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("");
@@ -183,6 +180,8 @@ public class Join extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    //비밀번호 입력과 비밀번호 확인 입력이 다를 경우
     private  void showM2(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("");
@@ -196,6 +195,8 @@ public class Join extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    //회원가입 성공 시 알림박스
     private  void showSuccess(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("");
@@ -212,6 +213,8 @@ public class Join extends AppCompatActivity {
         dialog.show();
     }
 
+
+    //회원가입 취소 시 알림박스
     private void showCancel(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("");

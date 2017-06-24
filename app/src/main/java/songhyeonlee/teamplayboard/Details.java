@@ -114,7 +114,7 @@ public class Details extends AppCompatActivity {
             String uid = user.getUid();
         }
 
-        //댓글 전송버튼
+        //댓글 전송버튼 -> 댓글 작성자 이메일, 내용이 파이어베이스에 저장됨
         messageInput = (EditText)findViewById(R.id.messageInput);
         sendButton = (Button)findViewById(R.id.sendButton);
         sendButton.setOnClickListener(new View.OnClickListener(){
@@ -151,6 +151,7 @@ public class Details extends AppCompatActivity {
         });
 
 
+        //저장된 데이터베이스를 리사이클러뷰로
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -167,7 +168,6 @@ public class Details extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
-        //댓글 글쓴이 이메일, 내용 "comment" DB에 저장
         DatabaseReference myRef2 = database.getReference("comments");
         myRef2.addChildEventListener(new ChildEventListener() {
             @Override

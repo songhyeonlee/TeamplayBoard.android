@@ -84,7 +84,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="22dp"
         android:layout_below="@+id/linearLayout2"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout17">
 
         <Button
             android:id="@+id/bntRegister"
@@ -122,6 +123,30 @@
         android:layout_centerInParent="true"
         android:id="@+id/pbLogin"
         android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/kanban1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout17"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/linearLayout17"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:onClick="toKanban1"
+        android:text="칸반1" />
+
+    <Button
+        android:id="@+id/create_kanban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/linearLayout17"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/linearLayout17"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:onClick="toCreateKanban"
+        android:text="칸반 생성" />
 
 
 </RelativeLayout>

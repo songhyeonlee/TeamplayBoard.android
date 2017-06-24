@@ -14,7 +14,8 @@
     android:layout_height="80dp"
     android:orientation="vertical"
     android:layout_marginTop="20dp"
-    android:id="@+id/linearLayout2">
+    android:id="@+id/linearLayout2"
+    >
     
     <Button
         android:layout_width="350dp"
@@ -40,9 +41,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="30dp"
         android:layout_below="@+id/linearLayout2"
-        android:layout_above="@+id/linearLayout9">
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout15"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/btnDeleteProjct"
+            android:text="delete"
+            android:textSize="14dp"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:background="#F6F6F6"
+            android:visibility="invisible"
+            />
+        <TextView
+            android:id="@+id/delete_explain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="13dp"
+            android:gravity="fill_vertical"
+            android:text="완료되지 않은 프로젝트는 팀장만 삭제할 수 있습니다."
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout9"
+        android:layout_below="@+id/linearLayout15">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -51,12 +81,11 @@
             android:layout_marginRight="20dp"
             android:layout_below="@+id/textView6">
 
-            <!-- A RecyclerView with some commonly used attributes -->
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/project_view"
+                android:id="@+id/projcet_listview"
                 android:scrollbars="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
 
 
         </ScrollView>
@@ -96,7 +125,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="test3"
+        android:onClick="toKanban1"
         android:text="project A"
         android:layout_marginBottom="16dp"
         android:layout_above="@+id/linearLayout9"
