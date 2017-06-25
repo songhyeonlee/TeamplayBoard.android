@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -22,12 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-import android.graphics.Color;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,15 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
     TextView defualt_addproject;
     TextView delete_explain;
+    Button btnNewProject;
     Button btnDeleteProjct;
 
-    Button btnMain;
-    Button btnAlarm;
-
     String email;
+    String uid;
 
     FirebaseDatabase database;
-
     List<Project_db> mProject;
 
     @Override
@@ -57,19 +50,33 @@ public class MainActivity extends AppCompatActivity {
 
         defualt_addproject = (TextView)findViewById(R.id.defualt_addproject);
         delete_explain = (TextView)findViewById(R.id.delete_explain);
+
+        //새 프로젝트 만들기 버튼
+        btnNewProject = (Button) findViewById(R.id.btnNewProject);
+        btnNewProject.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(MainActivity.this, Create_Project.class);
+                startActivity(i);
+            }
+        });
+
+        // 프로젝트 삭제 버튼
         btnDeleteProjct = (Button)findViewById(R.id.btnDeleteProjct);
+        btnDeleteProjct.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
-        btnMain = (Button) findViewById(R.id.btnMain);
-        btnAlarm = (Button) findViewById(R.id.btnAlarm);
 
         database = FirebaseDatabase.getInstance();
 
-
-        database = FirebaseDatabase.getInstance();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null) {
             email = user.getEmail();
+            uid = user.getUid();
         }
 
 
@@ -87,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //파이어베이스에 저장된 DB 불러와서 뷰로 작성
-        DatabaseReference myRef = database.getReference("project");
+        DatabaseReference myRef = database.getReference("user").child(uid).child("MY projects");
+
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -127,30 +135,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue().toString();
-                Log.d(TAG, "Value is: " + value);
+//                String value = dataSnapshot.getValue().toString();
+//                Log.d(TAG, "Value is: " + value);
 
-                for(DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
-                    String value2 = dataSnapshot2.getValue().toString();
+//                for(DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
+//                    String value2 = dataSnapshot2.getValue().toString();
 
-                    Project_db project = dataSnapshot2.getValue(Project_db.class);
+//                    Project_db project = dataSnapshot2.getValue(Project_db.class);
 
-                    mProject.add(project);
-                    mAdapter.notifyItemInserted(mProject.size()-1);
-                }
-            }
+//                    mProject.add(project);
+//                    mAdapter.notifyItemInserted(mProject.size()-1);
+//                }
+//            }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
+//            @Override
+//            public void onCancelled(DatabaseError error) {
                 // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
+//                Log.w(TAG, "Failed to read value.", error.toException());
+//            }
+ //       });
 
 
 
@@ -162,45 +170,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //프로젝트 삭제 버튼
-        btnDeleteProjct.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
 
-
-            }
-        });
 
 
     }
 
-    public void addProject(View v){
-        Intent i = new Intent(getApplicationContext(), Create_Project.class);
-        startActivity(i);
-    }
-
-
-    public void test2(View v){
-        Intent i = new Intent(getApplicationContext(), Create_Kanban1.class);
-        startActivity(i);
-    }
-
-
-
+    //하단 탭 버튼
     public void toMain(View v){
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
+        finish();
     }
 
     public void toAlarm(View v){
         Intent i = new Intent(getApplicationContext(), AlarmBox.class);
         startActivity(i);
+        finish();
     }
 
+
+
+    //test
     public void toKanban1(View v){
         Intent i = new Intent(getApplicationContext(), Kanban1.class);
         startActivity(i);
     }
+    public void test2(View v){
+        Intent i = new Intent(getApplicationContext(), Create_Kanban1.class);
+        startActivity(i);
+    }
+
 
 
 

@@ -44,6 +44,9 @@ public class Join extends AppCompatActivity {
     //static int cnt = 1;
     ProgressBar pbJoin;
 
+    String email;
+    String uid;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -53,6 +56,13 @@ public class Join extends AppCompatActivity {
         setContentView(R.layout.activity_join);
 
         database = FirebaseDatabase.getInstance();
+
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            email = user.getEmail();
+            uid = user.getUid();
+        }
 
         input_name = (EditText)findViewById(R.id.join_name);
         input_email = (EditText)findViewById(R.id.join_email);
@@ -79,7 +89,7 @@ public class Join extends AppCompatActivity {
 
                 //입력하지 않은 내용이 있을 경우
                 if(n.equals("")||n.isEmpty()||e.equals("")||e.isEmpty()||i.equals("")||i.isEmpty()||p.equals("")||p.isEmpty()||rp.equals("")||rp.isEmpty()){
-                    showM1();
+                    showEmptyet();
                 }
 
                 //회원가입 가능상태 (모든 입력칸 작성 & 비밀번호 확인)
@@ -88,9 +98,12 @@ public class Join extends AppCompatActivity {
                     //회원가입
                     registerUser(e, p);
 
+
                     Join_db j = new Join_db(n,e,i,p);
 
-                    DatabaseReference myRef = database.getReference("join").child(j.getId());
+                    DatabaseReference myRef = database.getReference("join").child(uid);
+                  //  String key = myRef.child("join").push().getKey();
+
 
                     Hashtable<String, String> join
                             = new Hashtable<String, String>();
@@ -99,12 +112,13 @@ public class Join extends AppCompatActivity {
                     join.put("id", i);
                     join.put("password", p);
 
+                 //   myRef.child(key).setValue(join);
                     myRef.setValue(join);
                 }
 
                 //비밀번호와 비밀번호 확인 입력이 다를 경우
                 else{
-                    showM2();
+                    showWrongPW();
                 }
             }
         });
@@ -155,7 +169,7 @@ public class Join extends AppCompatActivity {
                         pbJoin.setVisibility(View.GONE);
 
                         if (!task.isSuccessful()) {
-                            Toast.makeText(Join.this, "모두 입력해주세요. 이미 가입되어 있는 이메일주소로는 중복 가입이 불가능합니다.",
+                            Toast.makeText(Join.this, "입력형식을 확인해 주세요. 이미 가입되어 있는 이메일주소는 사용하실 수 없습니다.",
                                     Toast.LENGTH_SHORT).show();
                         }
                         else{
@@ -167,7 +181,7 @@ public class Join extends AppCompatActivity {
 
 
     //입력칸이 비어있을 경우
-    private  void showM1(){
+    private  void showEmptyet(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("");
         builder.setMessage("모두 입력해 주세요");
@@ -182,7 +196,7 @@ public class Join extends AppCompatActivity {
     }
 
     //비밀번호 입력과 비밀번호 확인 입력이 다를 경우
-    private  void showM2(){
+    private  void showWrongPW(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("");
         builder.setMessage("비밀번호를 확인해주세요");

@@ -35,6 +35,7 @@ public class Create_Kanban1 extends AppCompatActivity implements DatePickerDialo
     EditText kanban_memo;
 
     String email;
+    String uid;
     String state;
 
     int day, month, year, hour, minute;
@@ -62,8 +63,8 @@ public class Create_Kanban1 extends AppCompatActivity implements DatePickerDialo
 
         if (user != null) {
             email = user.getEmail();
+            uid = user.getUid();
         }
-
 
 
         //날짜기한설정버튼
@@ -114,8 +115,29 @@ public class Create_Kanban1 extends AppCompatActivity implements DatePickerDialo
 
                     kanban_db k = new kanban_db(k_name, k_duedate,k_memo);
 
-                    // 파이어베이스 "kanban" DB에 저장
-                    DatabaseReference myRef = database.getReference("kanban").child(k.getKanban_duedate()+" : "+ k.getKanban_name());
+                    //DatabaseReference myRef2 = database.getReference("join").child(uid).child("MY projects");
+                    //String key = myRef2.push().getKey();
+
+
+                    // 파이어베이스  DB에 저장
+               //     DatabaseReference myRef = database.getReference("join").child(uid).child("MY projects").child(key).child(k.getKanban_duedate()+" : "+ k.getKanban_name());
+
+
+
+
+
+//                    DatabaseReference myRef2 = database.getReference("kanban").child(uid).child("MY projects");
+  //                  String key = myRef2.push().getKey();
+
+                    DatabaseReference myRef = database.getReference("kanban").child(uid).child(k.getKanban_duedate()+" : "+ k.getKanban_name());
+
+
+
+
+
+                    //파이어베이스에 저장된 DB 불러와서 뷰로 작성
+                    //DatabaseReference myRef = database.getReference("join").child(uid).child("MY projects").child(key);
+
 
                     Hashtable<String, String> kanban
                             = new Hashtable<String, String>();

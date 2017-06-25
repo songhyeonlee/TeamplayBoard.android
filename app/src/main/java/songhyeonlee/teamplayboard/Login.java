@@ -25,6 +25,11 @@ public class Login extends AppCompatActivity {
     String stemail;
     String stpassword;
 
+    Button bntLogin;
+    Button bntRegister;
+    Button findidpwButton;
+
+
     ProgressBar pbLogin;
 
     private FirebaseAuth mAuth;
@@ -39,10 +44,9 @@ public class Login extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.etPassword);
         pbLogin = (ProgressBar) findViewById(R.id.pbLogin);
 
-        Button bntRegister = (Button) findViewById(R.id.bntRegister);
-        Button bntLogin = (Button) findViewById(R.id.bntLogin);
-        Button findidpwButton = (Button)findViewById(R.id.findidpwButton);
-
+        bntLogin = (Button) findViewById(R.id.bntLogin);
+        bntRegister = (Button) findViewById(R.id.bntRegister);
+        findidpwButton = (Button)findViewById(R.id.findidpwButton);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -56,7 +60,6 @@ public class Login extends AppCompatActivity {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
 
@@ -65,7 +68,6 @@ public class Login extends AppCompatActivity {
         bntRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
                     Intent i = new Intent(Login.this, Join.class);
                     startActivity(i);
             }
@@ -91,7 +93,7 @@ public class Login extends AppCompatActivity {
         });
 
 
-        //아이디/비밀번호 찾기 버튼
+        // ID/PW 찾기 버튼
         findidpwButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -118,7 +120,7 @@ public class Login extends AppCompatActivity {
 
 
 
-    //로그인 성공 or 실패
+    //로그인 메소드
     private void userLogin(String email, String password){
         pbLogin.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email, password)
@@ -146,7 +148,7 @@ public class Login extends AppCompatActivity {
 
 
 
-
+    //test error//
     public void toKanban1(View v){
         Intent i = new Intent(Login.this, Kanban1.class);
         startActivity(i);

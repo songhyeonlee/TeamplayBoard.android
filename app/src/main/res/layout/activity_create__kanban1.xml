@@ -188,7 +188,7 @@
             android:layout_width="130dp"
             android:layout_height="35dp"
             android:layout_marginRight="50dp"
-            android:text="메인화면"
+            android:text="MY 프로젝트"
             android:background="#E1E1E1"
             android:textStyle="bold" />
 
@@ -197,7 +197,7 @@
             android:layout_width="130dp"
             android:layout_height="35dp"
             android:onClick="toAlarm"
-            android:text="알림함"
+            android:text="MY 알림함"
             android:background="#E1E1E1"
             android:textStyle="bold" />
 

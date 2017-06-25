@@ -23,9 +23,9 @@ public class Join_db {
         // Default constructor required for calls to DataSnapshot.getValue(Comment.class)
     }
 
-    public Join_db(String name, String uid, String id, String pw) {
+    public Join_db(String name, String email, String id, String pw) {
         this.name = name;
-        this.email = uid;
+        this.email = email;
         this.id = id;
         this.pw = pw;
         cnt++;
@@ -54,13 +54,7 @@ public class Join_db {
         return result;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getName() {
         return name;
@@ -68,6 +62,14 @@ public class Join_db {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getId() {

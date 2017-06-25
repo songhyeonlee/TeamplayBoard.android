@@ -1,5 +1,7 @@
 package songhyeonlee.teamplayboard;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import java.util.List;
 
 public class Kanban_Adapter  extends RecyclerView.Adapter<Kanban_Adapter.ViewHolder>{
     List<kanban_db> mKanban;
+    Context context;
 
     // FirebaseDatabase database;
    // DatabaseReference myRef = database.getReference("kanban");
@@ -41,9 +44,11 @@ public class Kanban_Adapter  extends RecyclerView.Adapter<Kanban_Adapter.ViewHol
         }
     }
 
+
     // Provide a suitable constructor (depends on the kind of dataset)
-    public Kanban_Adapter(List<kanban_db> mKanban) {
+    public Kanban_Adapter(List<kanban_db> mKanban, Context context) {
         this.mKanban = mKanban;
+        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -65,6 +70,16 @@ public class Kanban_Adapter  extends RecyclerView.Adapter<Kanban_Adapter.ViewHol
         // - replace the contents of the view with that element
         holder.mKanbanName.setText(mKanban.get(position).getKanban_name());
         holder.mKanbandueMessage.setText("마감기한 : " + mKanban.get(position).getKanban_duedate());
+
+
+        holder.mKanbanName.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(context, Details.class);
+                context.startActivity(i);
+            }
+        });
+
 
 
 //        holder.mKanbanNext.setText("진행하기 >> ");

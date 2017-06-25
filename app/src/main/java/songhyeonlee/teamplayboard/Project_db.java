@@ -9,6 +9,7 @@ public class Project_db {
     public String project_name;
     public String project_duedate;
     public String projcet_leader;
+ //   public String uid;
   //  public String[] project_member;
 
   //  public int member_num;
@@ -23,6 +24,7 @@ public class Project_db {
         this.project_name = project_name;
         this.project_duedate = project_duedate;
         this.projcet_leader = projcet_leader;
+
     //    this.project_member[0] = projcet_leader;
     //    member_num = 1;
        // project_num++;

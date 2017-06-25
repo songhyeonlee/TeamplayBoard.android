@@ -20,16 +20,15 @@
             android:layout_height="30dp" />
 
         <Button
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:id="@+id/mKanbanName"
-            android:layout_width="235dp"
-            android:layout_height="wrap_content"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:gravity="left"
-            android:onClick="show_details"
-            android:text="task1"
-            android:textSize="17dp"
-            android:textStyle="italic"
-            android:visibility="visible" />
+            android:text ="task1"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
 
         <Button
             android:id="@+id/mKanbanNext"
@@ -58,12 +57,12 @@
 
         <TextView
             android:id="@+id/mKanbandueMessage"
-            android:layout_width="275dp"
+            android:layout_width="255dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="마감기한 : yy-mm-dd"
             android:paddingLeft="40dp"
-            android:textSize="12dp"
+            android:textSize="15dp"
             android:textColor="#ff8669"
             android:textStyle="bold"/>
 
@@ -71,10 +70,9 @@
             android:id="@+id/mKanbanBack"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="right|bottom"
             android:text="← 시작 전으로"
-
             android:textSize="10dp"
             android:visibility="visible" />
 

@@ -71,7 +71,7 @@ public class Project_Adapter extends RecyclerView.Adapter<Project_Adapter.ViewHo
         holder.mProjectName.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(context, Create_Kanban1.class);
+                Intent i = new Intent(context, Kanban1.class);
                 context.startActivity(i);
             }
         });
